@@ -225,10 +225,16 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
-      <h2 class="HHHHHHHHH"></h2>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <div style="margin-bottom: 10px"> 
+        <a class="" routerLink="/admin" style="font-size: 20px; font-weight: bold;">Для Администратора</a>
+      </div>
+      <div>
+        <button (click)="openDialog()" *ngIf="(userService.user$ | async) === null" >Войти</button>
+        <button (click)="logout()" *ngIf="(userService.user$ | async) !== null">Выйти</button>
+      </div>
+      <router-outlet />
     </div>
+   
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
       <div class="pill-group">
@@ -333,5 +339,3 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
-<router-outlet />
